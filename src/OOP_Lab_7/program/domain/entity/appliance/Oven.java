@@ -5,10 +5,11 @@ import OOP_Lab_7.program.domain.valueobject.Dimension;
 public class Oven extends Appliance {
     private final int maxHeatTemperature;
 
-    public Oven(Dimension dimension, int powerConsumption, int maxHeatTemperature) {
-        super(dimension, powerConsumption);
+    public Oven(int id, Dimension dimension, int powerConsumption, int maxHeatTemperature) {
+        super(id, dimension, powerConsumption);
         this.maxHeatTemperature = maxHeatTemperature;
     }
+
 
     public int getMaxHeatTemperature() {
         return maxHeatTemperature;
