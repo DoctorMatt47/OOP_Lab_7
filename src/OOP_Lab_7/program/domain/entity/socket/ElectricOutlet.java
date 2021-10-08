@@ -1,8 +1,8 @@
 package OOP_Lab_7.program.domain.entity.socket;
 
 public class ElectricOutlet implements ISocket{
-    public IConnectable connectable;
-    public boolean isPlugged = false;
+    private IConnectable connectable;
+    private boolean isPlugged = false;
 
     @Override
     public void plug(IConnectable connectable) {
