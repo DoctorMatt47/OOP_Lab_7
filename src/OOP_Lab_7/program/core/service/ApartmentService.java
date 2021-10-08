@@ -2,15 +2,12 @@ package OOP_Lab_7.program.core.service;
 
 import OOP_Lab_7.program.domain.entity.apartment.Apartment;
 import OOP_Lab_7.program.domain.entity.appliance.*;
-import OOP_Lab_7.program.domain.valueobject.Dimension;
-import org.w3c.dom.ranges.Range;
+import OOP_Lab_7.program.domain.entity.socket.ElectricOutlet;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Enumeration;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class ApartmentService implements IApartmentService {
     private final Apartment apartment;
@@ -27,7 +24,7 @@ public class ApartmentService implements IApartmentService {
     @Override
     public ArrayList<Appliance> getSortedAppliances() {
         return apartment.getAppliances().stream()
-                .sorted(Comparator.comparing(Appliance::getPowerConsumption))
+                .sorted(Comparator.comparing(Appliance::getPowerConsumption).reversed())
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -47,18 +44,21 @@ public class ApartmentService implements IApartmentService {
         var unpluggedOutlet = apartment.getOutlets().stream()
                 .filter(o -> !o.isPlugged())
                 .findFirst().orElse(null);
-        if (unpluggedOutlet == null) {
+        try {
+            appliance.connect(unpluggedOutlet);
+        } catch (Exception ex) {
             return false;
         }
-        appliance.connect(unpluggedOutlet);
         return true;
     }
 
     @Override
     public int getConsumptionPower() {
-        var appliances = getAppliances();
-        return IntStream.range(0, appliances.size())
-                .reduce(0, (acc, appIndex) -> acc + appliances.get(appIndex)
-                .getPowerConsumption());
+        var connectedAppliances = getAppliances().stream()
+                .filter(Appliance::isConnected)
+                .collect(Collectors.toCollection(ArrayList::new));
+        return IntStream.range(0, connectedAppliances.size())
+                .reduce(0, (acc, appIndex) ->
+                        acc + connectedAppliances.get(appIndex).getPowerConsumption());
     }
 }
