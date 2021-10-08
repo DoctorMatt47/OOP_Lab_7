@@ -15,4 +15,11 @@ public class Fridge extends Appliance {
         return capacity;
     }
 
+    @Override
+    public String toString() {
+        return "Fridge{" +
+                super.toString() +
+                " capacity=" + capacity +
+                '}';
+    }
 }

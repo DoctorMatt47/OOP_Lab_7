@@ -9,6 +9,7 @@ public abstract class Appliance implements IConnectable {
     private final int id;
     private final Dimension dimension;
     private final int powerConsumption;
+
     private boolean isConnected = false;
 
     protected ElectricOutlet socket;
@@ -49,6 +50,10 @@ public abstract class Appliance implements IConnectable {
         return powerConsumption;
     }
 
+    public boolean isConnected() {
+        return isConnected;
+    }
+
     @Override
     public String toString() {
         return "Appliance{" +
@@ -56,7 +61,6 @@ public abstract class Appliance implements IConnectable {
                 ", dimension=" + dimension +
                 ", powerConsumption=" + powerConsumption +
                 ", isConnected=" + isConnected +
-                ", socket=" + socket +
                 '}';
     }
 }

@@ -13,4 +13,12 @@ public class Vacuum extends Appliance {
     public int getBagCapacity() {
         return bagCapacity;
     }
+
+    @Override
+    public String toString() {
+        return "Vacuum{" +
+                super.toString() +
+                " bagCapacity=" + bagCapacity +
+                '}';
+    }
 }

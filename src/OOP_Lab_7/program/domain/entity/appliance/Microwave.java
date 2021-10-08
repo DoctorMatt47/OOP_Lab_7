@@ -13,4 +13,12 @@ public class Microwave extends Appliance {
     public int getMaxPower() {
         return maxPower;
     }
+
+    @Override
+    public String toString() {
+        return "Microwave{" +
+                super.toString() +
+                " maxPower=" + maxPower +
+                '}';
+    }
 }

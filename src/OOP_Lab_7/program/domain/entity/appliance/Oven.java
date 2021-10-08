@@ -14,4 +14,12 @@ public class Oven extends Appliance {
     public int getMaxHeatTemperature() {
         return maxHeatTemperature;
     }
+
+    @Override
+    public String toString() {
+        return "Oven{" +
+                super.toString() +
+                " maxHeatTemperature=" + maxHeatTemperature +
+                '}';
+    }
 }

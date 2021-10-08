@@ -13,4 +13,12 @@ public class AirConditioner extends Appliance {
     public int getAirPower() {
         return airPower;
     }
+
+    @Override
+    public String toString() {
+        return "AirConditioner{" +
+                super.toString() +
+                " airPower=" + airPower +
+                '}';
+    }
 }
