@@ -5,8 +5,16 @@ import OOP_Lab_7.program.domain.entity.appliance.*;
 import OOP_Lab_7.program.domain.entity.socket.ElectricOutlet;
 import OOP_Lab_7.program.domain.valueobject.Dimension;
 
+/**
+ * Represents creation of apartment.
+ * Implements apartment builder.
+ */
 public class ApartmentBuilder implements IApartmentBuilder {
-
+    /**
+     * Builds apartment instance.
+     * @return Apartment was built.
+     */
+    @Override
     public Apartment build() {
         var apartment = new Apartment();
         buildAppliances(apartment);
@@ -14,6 +22,10 @@ public class ApartmentBuilder implements IApartmentBuilder {
         return apartment;
     }
 
+    /**
+     * Constructs appliance collection. Adds it to the passed apartment.
+     * @param apartment Apartment where to add appliances.
+     */
     private void buildAppliances(Apartment apartment) {
         var appliances = apartment.getAppliances();
         appliances.add(new Fridge(11, new Dimension(80, 100, 193.5),
@@ -32,6 +44,10 @@ public class ApartmentBuilder implements IApartmentBuilder {
                 1000, 1));
     }
 
+    /**
+     * Constructs outlet collection. Adds it to the passed apartment.
+     * @param apartment Apartment where to add outlets.
+     */
     private void buildOutlets(Apartment apartment) {
         var outlets = apartment.getOutlets();
         int COUNT_OF_OUTLET = 3;

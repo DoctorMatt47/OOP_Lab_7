@@ -2,16 +2,29 @@ package OOP_Lab_7.program.infrastructure.console;
 
 import OOP_Lab_7.program.core.service.IApartmentService;
 import OOP_Lab_7.program.infrastructure.utils.Colors;
+import org.jetbrains.annotations.Contract;
 
 import java.util.Scanner;
 
+/**
+ * Represents console interface for the program.
+ */
+@SuppressWarnings("ClassCanBeRecord")
 public class ConsoleApplication {
     private final IApartmentService applianceService;
 
+    /**
+     * Console application constructor.
+     * @param applianceService Appliance service instance.
+     */
+    @Contract(pure = true)
     public ConsoleApplication(IApartmentService applianceService) {
         this.applianceService = applianceService;
     }
 
+    /**
+     * Starts console interface logic.
+     */
     public void show() {
         while (true) {
             printMainMenu();
@@ -29,6 +42,9 @@ public class ConsoleApplication {
         }
     }
 
+    /**
+     * Prints main menu.
+     */
     private void printMainMenu() {
         System.out.println();
         System.out.println("Choose command:");
@@ -40,6 +56,9 @@ public class ConsoleApplication {
         System.out.println("5 : Connect appliances");
     }
 
+    /**
+     * Prints appliances.
+     */
     private void getAppliances() {
         System.out.println();
         var appliances = applianceService.getAppliances();
@@ -48,6 +67,9 @@ public class ConsoleApplication {
         }
     }
 
+    /**
+     * Prints appliance.
+     */
     private void getAppliance() {
         System.out.println();
         System.out.println("Enter appliance id:");
@@ -61,6 +83,9 @@ public class ConsoleApplication {
         System.out.println(appliance);
     }
 
+    /**
+     * Prints sorted appliances.
+     */
     private void getSortedAppliances() {
         System.out.println();
         var sorted = applianceService.getSortedAppliances();
@@ -69,6 +94,9 @@ public class ConsoleApplication {
         }
     }
 
+    /**
+     * Prints total consumption power of connected appliances.
+     */
     private void getConsumptionPower() {
         System.out.println();
         System.out.print("Total power consumption is ");
@@ -76,6 +104,9 @@ public class ConsoleApplication {
         System.out.println(" Wh/Day");
     }
 
+    /**
+     * Print menu for appliance connection.
+     */
     private void connectAppliances() {
         var appliances = applianceService.getAppliances();
         while (true) {

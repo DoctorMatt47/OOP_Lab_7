@@ -1,5 +1,8 @@
 package OOP_Lab_7.program.infrastructure.utils;
 
+/**
+ * Represents color codes for the console.
+ */
 public class Colors {
     public static final String RESET = "\u001B[0m";
     public static final String BLACK = "\u001B[30m";
