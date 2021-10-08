@@ -4,4 +4,6 @@ public interface ISocket {
     void plug(IConnectable connectable);
 
     void pull();
+
+    boolean isPlugged();
 }
